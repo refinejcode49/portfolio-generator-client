@@ -1,26 +1,33 @@
-import React, { useState } from "react";
-import { Modal, BG } from "./styles";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { AuthContext } from "../../context/AuthContext";
 
-const SignUpPage = (/*{ toggleModal }*/) => {
-  const [username, setUsername] = useState("");
+const LoginPage = (/*{ toggleModal }*/) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState();
+
+  const { authenticateUser } = useContext(AuthContext);
 
   const nav = useNavigate();
 
-  const handleSignup = (event) => {
+  const handleLogin = (event) => {
     event.preventDefault(); // stop the page from reloading
-    const userToCreateInDb = { username, email, password };
+    const userToLogin = { email, password };
     axios
-      .post(`${import.meta.env.VITE_API_URL}/auth/signup`, userToCreateInDb)
+      .post(`${import.meta.env.VITE_API_URL}/auth/login`, userToLogin)
       .then((res) => {
-        console.log("user created in the DB", res.data);
-        nav("/login");
+        console.log("user is login", res.data);
+        localStorage.setItem("authToken", res.data.authToken);
+        return authenticateUser();
+      })
+      .then(() => {
+        nav("/profile");
       })
       .catch((err) => {
         console.log(err);
+        setErrorMessage(err.response.data.errorMessage);
       });
   };
 
@@ -28,18 +35,7 @@ const SignUpPage = (/*{ toggleModal }*/) => {
     <>
       {/* <Modal />
       <BG onClick={toggleModal} />*/}
-      <form onSubmit={handleSignup}>
-        <label>
-          Username :
-          <input
-            type="text"
-            placeholder="enter an username"
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          />
-        </label>
+      <form onSubmit={handleLogin}>
         <label>
           Email :
           <input
@@ -62,13 +58,14 @@ const SignUpPage = (/*{ toggleModal }*/) => {
             }}
           />
         </label>
-        <button>Sign up</button>
+        <button>Login</button>
       </form>
+      {errorMessage ? <p>{errorMessage}</p> : null}
       <p>
-        Already a member ?<Link to="/login">Login</Link>
+        New here ?<Link to="/signup">Sign up</Link>
       </p>
     </>
   );
 };
 
-export default SignUpPage;
+export default LoginPage;
