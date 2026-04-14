@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
+import ModalComponent from "../../components/Modal/ModalComponent";
 
 const LoginPage = (/*{ toggleModal }*/) => {
   const [email, setEmail] = useState("");
@@ -33,37 +34,37 @@ const LoginPage = (/*{ toggleModal }*/) => {
 
   return (
     <>
-      {/* <Modal />
-      <BG onClick={toggleModal} />*/}
-      <form onSubmit={handleLogin}>
-        <label>
-          Email :
-          <input
-            type="email"
-            placeholder="enter a valid email adress"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-        </label>
-        <label>
-          Password :
-          <input
-            type="password"
-            placeholder="enter a password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-        </label>
-        <button>Login</button>
-      </form>
-      {errorMessage ? <p>{errorMessage}</p> : null}
-      <p>
-        New here ?<Link to="/signup">Sign up</Link>
-      </p>
+      <ModalComponent>
+        <form onSubmit={handleLogin}>
+          <label>
+            Email :
+            <input
+              type="email"
+              placeholder="enter a valid email adress"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
+          </label>
+          <label>
+            Password :
+            <input
+              type="password"
+              placeholder="enter a password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+          </label>
+          <button>Login</button>
+        </form>
+        {errorMessage ? <p>{errorMessage}</p> : null}
+        <p>
+          New here ?<Link to="/signup">Sign up</Link>
+        </p>
+      </ModalComponent>
     </>
   );
 };
