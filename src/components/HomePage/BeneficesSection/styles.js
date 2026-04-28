@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-export const SectionTitle = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-`;
-
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -23,7 +16,7 @@ export const CardWrapper = styled.div`
   gap: 16px;
 `;
 
-export const Title = styled.h4`
+export const Title = styled.h3`
   font-size: 20px;
   font-weight: 700;
   color: var(--text-main);

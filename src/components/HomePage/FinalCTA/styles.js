@@ -30,20 +30,3 @@ export const PrimaryBtn = styled.button`
     transform: translateY(0);
   }
 `;
-
-export const SecondaryBtn = styled.button`
-  background: transparent;
-  color: var(--text-main);
-  border: 1px solid var(--border-color);
-  padding: 8px 16px;
-  border-radius: var(--radius);
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    border-color: var(--text-secondary);
-    background-color: var(--surface-elevated);
-  }
-`;

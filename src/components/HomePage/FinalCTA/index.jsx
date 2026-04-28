@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
+import { Container, PrimaryBtn } from "./styles";
 
 const FinalCTA = () => {
   return (
-    <div>
-        <h2>Ready to create your portfolio ?</h2>
-        <button>Start now</button>
-    </div>
-  )
-}
+    <Container>
+      <h2>Ready to create your portfolio ?</h2>
+      <PrimaryBtn>Start now</PrimaryBtn>
+    </Container>
+  );
+};
 
-export default FinalCTA
+export default FinalCTA;

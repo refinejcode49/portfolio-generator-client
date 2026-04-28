@@ -1,22 +1,36 @@
-import React from 'react'
+import React from "react";
+import { Container, CardWrapper, Title, Description } from "./styles";
 
 const ProofSection = () => {
   return (
-   <>
-   <div>
-    <h3>4 themes</h3>
-    <p>Choose between a minimal theme, a terminal one according to your style and profil.</p>
-   </div>
-   <div>
-    <h3>Fill up your portfolio without complexity</h3>
-    <p>Add your projects, skills, Github, CV with a simple form without touching code. </p>
-   </div>
-   <div>
-    <h3>Publish your portfolio and share it in just a few clicks</h3>
-    <p>Get a clean URL to send your portfolio to recruiters, on LinkedIn, or in your job applications.</p>
-   </div>
-   </>
-  )
-}
+    <>
+      <Container>
+        <CardWrapper>
+          <Title>4 themes</Title>
+          <Description>
+            Choose between a minimal theme, a terminal one according to your
+            style and profil.
+          </Description>
+        </CardWrapper>
+        <CardWrapper>
+          <Title>Fill up your portfolio without complexity</Title>
+          <Description>
+            Add your projects, skills, Github, CV with a simple form without
+            touching code.
+          </Description>
+        </CardWrapper>
+        <CardWrapper>
+          <Title>
+            Publish your portfolio and share it in just a few clicks
+          </Title>
+          <Description>
+            Get a clean URL to send your portfolio to recruiters, on LinkedIn,
+            or in your job applications.
+          </Description>
+        </CardWrapper>
+      </Container>
+    </>
+  );
+};
 
-export default ProofSection
+export default ProofSection;

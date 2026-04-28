@@ -11,7 +11,6 @@ import ExamplesSection from "../../components/HomePage/PortfoliosExamples";
 const HomePage = () => {
   return (
     <Homepage>
-      <NavBar />
       <Hero />
       <ProofSection />
       <WorkSection />

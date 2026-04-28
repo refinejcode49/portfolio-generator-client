@@ -1,13 +1,13 @@
 import React from "react";
-import { Container } from "./styles";
+import { Container, PrimaryBtn, SecondaryBtn } from "./styles";
 
 const Hero = () => {
   return (
     <Container>
       <h1>Create your portfolio in a few minutes</h1>
       <h2>Choose a theme, fill your profil and publish your portfolio</h2>
-      <button>Create your portfolio</button>
-      <button>Preview the templates</button>
+      <PrimaryBtn>Create your portfolio</PrimaryBtn>
+      <SecondaryBtn>Preview the templates</SecondaryBtn>
     </Container>
   );
 };
