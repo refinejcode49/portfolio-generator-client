@@ -8,6 +8,7 @@ import NavBar from "./components/Navbar/Navbar";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { GlobalStyle } from "./styles";
 import AboutComponent from "./pages/HowItWorks";
+import CreatePortfolio from "./pages/CreatePortfolio/CreatePortfolio";
 
 function App() {
   return (
@@ -23,6 +24,14 @@ function App() {
           element={
             <ProtectedRoutes>
               <ProfilePage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <ProtectedRoutes>
+              <CreatePortfolio />
             </ProtectedRoutes>
           }
         />

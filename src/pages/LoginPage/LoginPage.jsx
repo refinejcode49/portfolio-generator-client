@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-import ModalComponent from "../../components/Modal/ModalComponent";
+import { FormContainer, Input, Label, SubmitButton } from "../../styles";
 
 const LoginPage = (/*{ toggleModal }*/) => {
   const [email, setEmail] = useState("");
@@ -34,37 +34,35 @@ const LoginPage = (/*{ toggleModal }*/) => {
 
   return (
     <>
-      <ModalComponent>
-        <form onSubmit={handleLogin}>
-          <label>
-            Email :
-            <input
-              type="email"
-              placeholder="enter a valid email adress"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Password :
-            <input
-              type="password"
-              placeholder="enter a password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </label>
-          <button>Login</button>
-        </form>
-        {errorMessage ? <p>{errorMessage}</p> : null}
-        <p>
-          New here ?<Link to="/signup">Sign up</Link>
-        </p>
-      </ModalComponent>
+      <FormContainer onSubmit={handleLogin}>
+        <Label>
+          Email :
+          <Input
+            type="email"
+            placeholder="Enter a valid email adress"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </Label>
+        <Label>
+          Password :
+          <Input
+            type="password"
+            placeholder="Enter a password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </Label>
+        <SubmitButton>Login</SubmitButton>
+      </FormContainer>
+      {errorMessage ? <p>{errorMessage}</p> : null}
+      <p>
+        New here ?<Link to="/signup">Sign up</Link>
+      </p>
     </>
   );
 };

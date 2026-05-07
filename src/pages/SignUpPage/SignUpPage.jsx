@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import ModalComponent from "../../components/Modal/ModalComponent";
+import { FormContainer, Input, Label, SubmitButton } from "../../styles";
 
-const SignUpPage = (/*{ toggleModal }*/) => {
+const SignUpPage = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
 
   const nav = useNavigate();
 
@@ -27,47 +26,45 @@ const SignUpPage = (/*{ toggleModal }*/) => {
 
   return (
     <>
-      <ModalComponent>
-        <form onSubmit={handleSignup}>
-          <label>
-            Username :
-            <input
-              type="text"
-              placeholder="enter an username"
-              value={username}
-              onChange={(e) => {
-                setUsername(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Email :
-            <input
-              type="email"
-              placeholder="enter a valid email adress"
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-            />
-          </label>
-          <label>
-            Password :
-            <input
-              type="password"
-              placeholder="enter a password"
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-            />
-          </label>
-          <button>Sign up</button>
-        </form>
-        <p>
-          Already a member ?<Link to="/login">Login</Link>
-        </p>
-      </ModalComponent>
+      <FormContainer onSubmit={handleSignup}>
+        <Label>
+          Username :
+          <Input
+            type="text"
+            placeholder="Enter an username"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
+        </Label>
+        <Label>
+          Email :
+          <Input
+            type="email"
+            placeholder="Enter a valid email adress"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+        </Label>
+        <Label>
+          Password :
+          <Input
+            type="password"
+            placeholder="Enter a password"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </Label>
+        <SubmitButton>Sign up</SubmitButton>
+      </FormContainer>
+      <p>
+        Already a member ?<Link to="/login">Login</Link>
+      </p>
     </>
   );
 };
