@@ -4,7 +4,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import { FormContainer, Input, Label, SubmitButton } from "../../styles";
 
-const LoginPage = (/*{ toggleModal }*/) => {
+const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState();

@@ -1,22 +1,32 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import ModalComponent from "../../components/Modal";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
 const ProfilePage = () => {
-  const { currentUser } = useContext(AuthContext);
-  const [showModal, setShowModal] = useState(false);
+  const { currentUser, setCurrentUser } = useContext(AuthContext);
 
-  const toggleModal = () => {
-    setShowModal((showModal) => !showModal);
-  };
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/auth/profile/${currentUser._id}`)
+      .then((res) => {
+        console.log(res.data);
+        setCurrentUser(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [currentUser._id]);
+  
   return (
     <>
-      {showModal && <ModalComponent toggleModal={toggleModal} />}
       <h2>{currentUser.username}'s profile</h2>
       <div>
         <h3>Portfolios created: </h3>
 
-        <button onClick={toggleModal}>Create a portfolio</button>
+        <Link to="/create">
+          <button>Create a portfolio</button>
+        </Link>
       </div>
     </>
   );
