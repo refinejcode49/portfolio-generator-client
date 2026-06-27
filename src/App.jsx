@@ -9,6 +9,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import { GlobalStyle } from "./styles";
 import AboutComponent from "./pages/HowItWorks";
 import CreatePortfolio from "./pages/CreatePortfolio/CreatePortfolio";
+import MinimalTheme from "./components/Templates/MinimalTheme/MinimalTheme";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
             </ProtectedRoutes>
           }
         />
+        <Route path="/minimal-theme" element={<MinimalTheme />} />
         <Route path="/about" element={<AboutComponent />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
